@@ -1,0 +1,12 @@
+{
+  "id": "ck_arduino_leonardo_board",
+  "name": "CK Arduino Leonardo",
+  "version": "1.0.0",
+  "description": "Arduino Leonardo board package for CK cloud import.",
+  "vendor": "CK",
+  "fqbn_base": "arduino:avr:leonardo",
+  "arduino_core": {
+    "package": "arduino:avr",
+    "index_url": "https://downloads.arduino.cc/packages/package_index.json"
+  }
+}

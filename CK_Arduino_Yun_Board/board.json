@@ -1,0 +1,12 @@
+{
+  "id": "ck_arduino_yun_board",
+  "name": "CK Arduino Yun",
+  "version": "1.0.0",
+  "description": "Arduino Yun board package for CK cloud import.",
+  "vendor": "CK",
+  "fqbn_base": "arduino:avr:yun",
+  "arduino_core": {
+    "package": "arduino:avr",
+    "index_url": "https://downloads.arduino.cc/packages/package_index.json"
+  }
+}
