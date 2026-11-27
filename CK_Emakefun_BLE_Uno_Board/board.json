@@ -2,8 +2,8 @@
   "schema_version": 1,
   "id": "emakefun_ble_uno",
   "name": "Emakefun BLE-Uno",
-  "version": "1.0.0",
-  "description": "Emakefun BLE-Uno 开发板（ATmega328P + CC2540 蓝牙 4.0 BLE），官方资料见 docs.emakefun.com。",
+  "version": "1.1.0",
+  "description": "Emakefun BLE-Uno 开发板（ATmega328P + 板载 CH571F 低功耗蓝牙 BLE），随包内置「板载 BLE 蓝牙」串口通信与 AT 配置积木。",
   "vendor": "Emakefun",
   "vendor_logo": "assets/emakefun-logo.png",
   "icon": "assets/ble-uno.png",
@@ -14,7 +14,48 @@
     "version": "1.8.8",
     "recommended_version": "1.8.8"
   },
+  "capabilities": {
+    "bluetooth_le": true
+  },
   "pins": [
+    {
+      "label": "D0 (RX / 板载BLE)",
+      "value": "0",
+      "capabilities": [
+        "digital",
+        "uart"
+      ],
+      "reserved_by": "onboard-ble-uart",
+      "sharing": "shared",
+      "risks": [
+        {
+          "code": "onboard-ble-uart",
+          "severity": "notice",
+          "title": "板载 BLE 蓝牙复用硬件串口",
+          "detail": "Emakefun BLE-Uno 的板载蓝牙芯片连接在 D0/D1 硬件串口，使用蓝牙通信或下载程序时请避免外接占用串口的器件。"
+        }
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D1 (TX / 板载BLE)",
+      "value": "1",
+      "capabilities": [
+        "digital",
+        "uart"
+      ],
+      "reserved_by": "onboard-ble-uart",
+      "sharing": "shared",
+      "risks": [
+        {
+          "code": "onboard-ble-uart",
+          "severity": "notice",
+          "title": "板载 BLE 蓝牙复用硬件串口",
+          "detail": "Emakefun BLE-Uno 的板载蓝牙芯片连接在 D0/D1 硬件串口，使用蓝牙通信或下载程序时请避免外接占用串口的器件。"
+        }
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
     {
       "label": "D2",
       "value": "2",

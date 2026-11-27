@@ -1,0 +1,70 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_rf24_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::begin(static_cast<uint8_t>({{value:CHANNEL}}), {{field:PA}}, {{field:RATE}});\n"
+    },
+    {
+      "type": "emakefun_rf24_set_tx",
+      "kind": "statement",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::setTxAddress(String({{value:ADDR}}));\n"
+    },
+    {
+      "type": "emakefun_rf24_set_rx",
+      "kind": "statement",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::setRxAddress(String({{value:ADDR}}));\n"
+    },
+    {
+      "type": "emakefun_rf24_send_text",
+      "kind": "statement",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::sendText(String({{value:TEXT}}));\n"
+    },
+    {
+      "type": "emakefun_rf24_send_number",
+      "kind": "statement",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::sendNumber({{value:NUM}});\n"
+    },
+    {
+      "type": "emakefun_rf24_available",
+      "kind": "expression",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::available()"
+    },
+    {
+      "type": "emakefun_rf24_read_text",
+      "kind": "expression",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::readText()"
+    },
+    {
+      "type": "emakefun_rf24_read_number",
+      "kind": "expression",
+      "includes": {
+        "EmakefunRFNano_h": "#include <EmakefunRFNano.h>"
+      },
+      "template": "EmakefunRFNano::readNumber()"
+    }
+  ]
+}

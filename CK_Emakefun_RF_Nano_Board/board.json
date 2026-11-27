@@ -2,8 +2,8 @@
   "schema_version": 1,
   "id": "emakefun_rf_nano",
   "name": "Emakefun RF-Nano",
-  "version": "1.0.0",
-  "description": "Emakefun RF-Nano 开发板（ATmega328P + nRF24L01+ 2.4GHz 无线通信），官方资料见 docs.emakefun.com。",
+  "version": "1.1.0",
+  "description": "Emakefun RF-Nano V3.0 开发板（ATmega328P + 板载 nRF24L01+ 2.4GHz 无线），随包内置「板载 2.4G 无线 (nRF24)」积木与官方 RF24 v1.6.2 驱动。",
   "vendor": "Emakefun",
   "vendor_logo": "assets/emakefun-logo.png",
   "icon": "assets/rf-nano.png",
@@ -22,7 +22,7 @@
         "digital",
         "interrupt"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D3 (PWM)",
@@ -32,7 +32,7 @@
         "pwm",
         "interrupt"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D4",
@@ -40,7 +40,7 @@
       "capabilities": [
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D5 (PWM)",
@@ -49,7 +49,7 @@
         "digital",
         "pwm"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D6 (PWM)",
@@ -58,23 +58,43 @@
         "digital",
         "pwm"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
-      "label": "D7 (nRF CSN)",
+      "label": "D7 (板载 nRF24 CE)",
       "value": "7",
       "capabilities": [
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "reserved_by": "onboard-nrf24l01",
+      "sharing": "exclusive",
+      "risks": [
+        {
+          "code": "onboard-nrf24-reserved",
+          "severity": "warning",
+          "title": "板载 nRF24L01+ 占用此引脚",
+          "detail": "Emakefun RF-Nano V3.0 的板载 2.4G 无线芯片固定占用 D7(CE)、D8(CSN)、D11-D13(SPI)，请勿复用为普通 GPIO。"
+        }
+      ],
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
-      "label": "D8 (nRF CE)",
+      "label": "D8 (板载 nRF24 CSN)",
       "value": "8",
       "capabilities": [
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "reserved_by": "onboard-nrf24l01",
+      "sharing": "exclusive",
+      "risks": [
+        {
+          "code": "onboard-nrf24-reserved",
+          "severity": "warning",
+          "title": "板载 nRF24L01+ 占用此引脚",
+          "detail": "Emakefun RF-Nano V3.0 的板载 2.4G 无线芯片固定占用 D7(CE)、D8(CSN)、D11-D13(SPI)，请勿复用为普通 GPIO。"
+        }
+      ],
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D9 (PWM)",
@@ -83,7 +103,7 @@
         "digital",
         "pwm"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "D10 (PWM/SS)",
@@ -93,35 +113,65 @@
         "pwm",
         "spi"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
-      "label": "D11 (MOSI)",
+      "label": "D11 (MOSI / nRF24)",
       "value": "11",
       "capabilities": [
         "digital",
         "pwm",
         "spi"
       ],
-      "source": "Emakefun RF-Nano"
+      "reserved_by": "onboard-nrf24l01",
+      "sharing": "exclusive",
+      "risks": [
+        {
+          "code": "onboard-nrf24-reserved",
+          "severity": "warning",
+          "title": "板载 nRF24L01+ 占用此引脚",
+          "detail": "Emakefun RF-Nano V3.0 的板载 2.4G 无线芯片固定占用 D7(CE)、D8(CSN)、D11-D13(SPI)，请勿复用为普通 GPIO。"
+        }
+      ],
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
-      "label": "D12 (MISO)",
+      "label": "D12 (MISO / nRF24)",
       "value": "12",
       "capabilities": [
         "digital",
         "spi"
       ],
-      "source": "Emakefun RF-Nano"
+      "reserved_by": "onboard-nrf24l01",
+      "sharing": "exclusive",
+      "risks": [
+        {
+          "code": "onboard-nrf24-reserved",
+          "severity": "warning",
+          "title": "板载 nRF24L01+ 占用此引脚",
+          "detail": "Emakefun RF-Nano V3.0 的板载 2.4G 无线芯片固定占用 D7(CE)、D8(CSN)、D11-D13(SPI)，请勿复用为普通 GPIO。"
+        }
+      ],
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
-      "label": "D13 (SCK/LED)",
+      "label": "D13 (SCK / nRF24)",
       "value": "13",
       "capabilities": [
         "digital",
         "spi"
       ],
-      "source": "Emakefun RF-Nano"
+      "reserved_by": "onboard-nrf24l01",
+      "sharing": "exclusive",
+      "risks": [
+        {
+          "code": "onboard-nrf24-reserved",
+          "severity": "warning",
+          "title": "板载 nRF24L01+ 占用此引脚",
+          "detail": "Emakefun RF-Nano V3.0 的板载 2.4G 无线芯片固定占用 D7(CE)、D8(CSN)、D11-D13(SPI)，请勿复用为普通 GPIO。"
+        }
+      ],
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A0",
@@ -130,7 +180,7 @@
         "analog",
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A1",
@@ -139,7 +189,7 @@
         "analog",
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A2",
@@ -148,7 +198,7 @@
         "analog",
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A3",
@@ -157,7 +207,7 @@
         "analog",
         "digital"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A4 (SDA)",
@@ -167,7 +217,7 @@
         "digital",
         "i2c"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A5 (SCL)",
@@ -177,7 +227,7 @@
         "digital",
         "i2c"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A6",
@@ -185,7 +235,7 @@
       "capabilities": [
         "analog"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     },
     {
       "label": "A7",
@@ -193,7 +243,7 @@
       "capabilities": [
         "analog"
       ],
-      "source": "Emakefun RF-Nano"
+      "source": "Emakefun RF-Nano V3.0"
     }
   ]
 }

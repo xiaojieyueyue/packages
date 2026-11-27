@@ -1,0 +1,89 @@
+{
+  "kind": "category",
+  "name": "板载 2.4G 无线 (nRF24)",
+  "colour": "#E65100",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_begin",
+      "inputs": {
+        "CHANNEL": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 115
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_set_tx",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "00001"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_set_rx",
+      "inputs": {
+        "ADDR": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "00001"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_send_text",
+      "inputs": {
+        "TEXT": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "hello"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_send_number",
+      "inputs": {
+        "NUM": {
+          "shadow": {
+            "type": "math_number",
+            "fields": {
+              "NUM": 100
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_available"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_read_text"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_rf24_read_number"
+    }
+  ]
+}

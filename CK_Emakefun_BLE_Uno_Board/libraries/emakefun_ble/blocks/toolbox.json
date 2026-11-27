@@ -1,0 +1,83 @@
+{
+  "kind": "category",
+  "name": "板载 BLE 蓝牙",
+  "colour": "#2563EB",
+  "contents": [
+    {
+      "kind": "block",
+      "type": "emakefun_ble_begin"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_set_name",
+      "inputs": {
+        "NAME": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "Emakefun-BLE"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_set_role"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_set_route"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_connect",
+      "inputs": {
+        "MAC": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "83:46:8c:e4:c2:84"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_send_text",
+      "inputs": {
+        "TEXT": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "hello"
+            }
+          }
+        }
+      }
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_available"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_read_text"
+    },
+    {
+      "kind": "block",
+      "type": "emakefun_ble_send_at",
+      "inputs": {
+        "CMD": {
+          "shadow": {
+            "type": "text",
+            "fields": {
+              "TEXT": "AT+MAC?"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

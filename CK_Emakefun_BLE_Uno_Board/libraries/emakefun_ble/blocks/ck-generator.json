@@ -1,0 +1,78 @@
+{
+  "schema": "ck-generator",
+  "version": 1,
+  "rules": [
+    {
+      "type": "emakefun_ble_begin",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::begin({{field:BAUD}}UL);\n"
+    },
+    {
+      "type": "emakefun_ble_set_name",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::setName(String({{value:NAME}}));\n"
+    },
+    {
+      "type": "emakefun_ble_set_role",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::setRole({{field:ROLE}});\n"
+    },
+    {
+      "type": "emakefun_ble_set_route",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::setRoute({{field:MODE}});\n"
+    },
+    {
+      "type": "emakefun_ble_connect",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::connectMac(String({{value:MAC}}));\n"
+    },
+    {
+      "type": "emakefun_ble_send_text",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::sendText(String({{value:TEXT}}), {{field:NL}});\n"
+    },
+    {
+      "type": "emakefun_ble_available",
+      "kind": "expression",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::available()"
+    },
+    {
+      "type": "emakefun_ble_read_text",
+      "kind": "expression",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::readText()"
+    },
+    {
+      "type": "emakefun_ble_send_at",
+      "kind": "statement",
+      "includes": {
+        "EmakefunBleUno_h": "#include <EmakefunBleUno.h>"
+      },
+      "template": "EmakefunBleUno::sendAt(String({{value:CMD}}));\n"
+    }
+  ]
+}

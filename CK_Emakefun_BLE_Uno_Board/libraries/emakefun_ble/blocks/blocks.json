@@ -1,0 +1,190 @@
+[
+  {
+    "type": "emakefun_ble_begin",
+    "message0": "初始化板载 BLE 蓝牙 波特率 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "BAUD",
+        "options": [
+          [
+            "115200（默认）",
+            "115200"
+          ],
+          [
+            "9600",
+            "9600"
+          ],
+          [
+            "38400",
+            "38400"
+          ],
+          [
+            "57600",
+            "57600"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_set_name",
+    "message0": "BLE 蓝牙 设置设备名称 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "NAME",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_set_role",
+    "message0": "BLE 蓝牙 设为 %1 模式",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "ROLE",
+        "options": [
+          [
+            "从机 (1)",
+            "1"
+          ],
+          [
+            "主机 (0)",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_set_route",
+    "message0": "BLE 蓝牙 通信模式 %1",
+    "args0": [
+      {
+        "type": "field_dropdown",
+        "name": "MODE",
+        "options": [
+          [
+            "BLE透传 (0)",
+            "0"
+          ],
+          [
+            "USB直连BLE (1)",
+            "1"
+          ],
+          [
+            "透传+USB监听 (2)",
+            "2"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_connect",
+    "message0": "BLE 蓝牙 主机连接从机 MAC %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "MAC",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_send_text",
+    "message0": "BLE 蓝牙 发送文本 %1 换行 %2",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TEXT",
+        "check": "String"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "NL",
+        "options": [
+          [
+            "是",
+            "true"
+          ],
+          [
+            "否",
+            "false"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_available",
+    "message0": "BLE 蓝牙 收到数据？",
+    "output": "Boolean",
+    "colour": "#2563EB",
+    "tooltip": "判断板载 BLE 蓝牙是否收到待读取数据。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_read_text",
+    "message0": "BLE 蓝牙 读取文本",
+    "output": "String",
+    "colour": "#2563EB",
+    "tooltip": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_ble_send_at",
+    "message0": "BLE 蓝牙 发送 AT 指令 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CMD",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#2563EB",
+    "tooltip": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+    "helpUrl": ""
+  }
+]
