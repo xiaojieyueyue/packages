@@ -10,5 +10,8 @@
   "license": "Apache-2.0",
   "includes": [
     "EmakefunRFNano.h"
-  ]
+  ],
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun.png",
+  "icon": "assets/icon.png"
 }
