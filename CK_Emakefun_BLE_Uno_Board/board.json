@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "id": "emakefun_ble_uno",
+  "name": "Emakefun BLE-Uno",
+  "version": "1.0.0",
+  "description": "Emakefun BLE-Uno 开发板（ATmega328P + CC2540 蓝牙 4.0 BLE），官方资料见 docs.emakefun.com。",
+  "vendor": "Emakefun",
+  "vendor_logo": "assets/emakefun-logo.png",
+  "icon": "assets/ble-uno.png",
+  "architecture": "avr",
+  "fqbn_base": "arduino:avr:uno",
+  "arduino_core": {
+    "package": "arduino:avr",
+    "version": "1.8.8",
+    "recommended_version": "1.8.8"
+  },
+  "pins": [
+    {
+      "label": "D2",
+      "value": "2",
+      "capabilities": [
+        "digital",
+        "interrupt"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D3 (PWM)",
+      "value": "3",
+      "capabilities": [
+        "digital",
+        "pwm",
+        "interrupt"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D4",
+      "value": "4",
+      "capabilities": [
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D5 (PWM)",
+      "value": "5",
+      "capabilities": [
+        "digital",
+        "pwm"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D6 (PWM)",
+      "value": "6",
+      "capabilities": [
+        "digital",
+        "pwm"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D7",
+      "value": "7",
+      "capabilities": [
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D8",
+      "value": "8",
+      "capabilities": [
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D9 (PWM)",
+      "value": "9",
+      "capabilities": [
+        "digital",
+        "pwm"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D10 (PWM/SS)",
+      "value": "10",
+      "capabilities": [
+        "digital",
+        "pwm",
+        "spi"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D11 (PWM/MOSI)",
+      "value": "11",
+      "capabilities": [
+        "digital",
+        "pwm",
+        "spi"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D12 (MISO)",
+      "value": "12",
+      "capabilities": [
+        "digital",
+        "spi"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "D13 (LED/SCK)",
+      "value": "13",
+      "capabilities": [
+        "digital",
+        "spi"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A0",
+      "value": "A0",
+      "capabilities": [
+        "analog",
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A1",
+      "value": "A1",
+      "capabilities": [
+        "analog",
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A2",
+      "value": "A2",
+      "capabilities": [
+        "analog",
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A3",
+      "value": "A3",
+      "capabilities": [
+        "analog",
+        "digital"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A4 (SDA)",
+      "value": "A4",
+      "capabilities": [
+        "analog",
+        "digital",
+        "i2c"
+      ],
+      "source": "Emakefun BLE-Uno"
+    },
+    {
+      "label": "A5 (SCL)",
+      "value": "A5",
+      "capabilities": [
+        "analog",
+        "digital",
+        "i2c"
+      ],
+      "source": "Emakefun BLE-Uno"
+    }
+  ]
+}
