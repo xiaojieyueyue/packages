@@ -1,0 +1,951 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_rf24",
+  "display_name": "板载 2.4G 无线 (nRF24)",
+  "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 2.4GHz 无线通信积木库。",
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr"
+    ],
+    "boards": [
+      "arduino:avr:nano"
+    ]
+  },
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_rf24_begin",
+      "display_name": "初始化板载 2.4G 无线 频道 %1 功率 %2 速率 %3",
+      "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "statement",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+        "behavior": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": [
+          "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "PA",
+          "kind": "dropdown",
+          "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+          "options": [
+            {
+              "label": "最大 (MAX)",
+              "value": "3"
+            },
+            {
+              "label": "高 (HIGH)",
+              "value": "2"
+            },
+            {
+              "label": "低 (LOW)",
+              "value": "1"
+            },
+            {
+              "label": "最小 (MIN)",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "name": "RATE",
+          "kind": "dropdown",
+          "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+          "options": [
+            {
+              "label": "1Mbps",
+              "value": "1"
+            },
+            {
+              "label": "2Mbps",
+              "value": "2"
+            },
+            {
+              "label": "250Kbps",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "CHANNEL",
+          "kind": "value",
+          "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+          "check": "Number",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+            "template": "EmakefunRFNano::begin(static_cast<uint8_t>({{value:CHANNEL}}), {{field:PA}}, {{field:RATE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_set_tx",
+      "display_name": "2.4G 无线 设为发送模式 目标地址 %1",
+      "description": "设置 5 字节通信地址并切换到发送模式。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "statement",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "设置 5 字节通信地址并切换到发送模式。",
+        "behavior": "设置 5 字节通信地址并切换到发送模式。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": [
+          "设置 5 字节通信地址并切换到发送模式。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "设置 5 字节通信地址并切换到发送模式。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置 5 字节通信地址并切换到发送模式。",
+            "template": "EmakefunRFNano::setTxAddress(String({{value:ADDR}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "设置 5 字节通信地址并切换到发送模式。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_set_rx",
+      "display_name": "2.4G 无线 设为接收模式 监听地址 %1",
+      "description": "设置 5 字节监听地址并开启接收监听。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "statement",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "设置 5 字节监听地址并开启接收监听。",
+        "behavior": "设置 5 字节监听地址并开启接收监听。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": [
+          "设置 5 字节监听地址并开启接收监听。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "ADDR",
+          "kind": "value",
+          "description": "设置 5 字节监听地址并开启接收监听。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "statement",
+            "description": "设置 5 字节监听地址并开启接收监听。",
+            "template": "EmakefunRFNano::setRxAddress(String({{value:ADDR}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "设置 5 字节监听地址并开启接收监听。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_send_text",
+      "display_name": "2.4G 无线 发送文本 %1",
+      "description": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "statement",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+        "behavior": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": [
+          "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "TEXT",
+          "kind": "value",
+          "description": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "statement",
+            "description": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+            "template": "EmakefunRFNano::sendText(String({{value:TEXT}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_send_number",
+      "display_name": "2.4G 无线 发送数字 %1",
+      "description": "通过板载 nRF24L01+ 发送一个数字。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "statement",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "通过板载 nRF24L01+ 发送一个数字。",
+        "behavior": "通过板载 nRF24L01+ 发送一个数字。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": [
+          "通过板载 nRF24L01+ 发送一个数字。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "NUM",
+          "kind": "value",
+          "description": "通过板载 nRF24L01+ 发送一个数字。",
+          "check": "Number",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "statement",
+            "description": "通过板载 nRF24L01+ 发送一个数字。",
+            "template": "EmakefunRFNano::sendNumber({{value:NUM}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "通过板载 nRF24L01+ 发送一个数字。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_available",
+      "display_name": "2.4G 无线 收到数据？",
+      "description": "判断板载 nRF24L01+ 是否收到新数据包。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "value",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "判断板载 nRF24L01+ 是否收到新数据包。",
+        "behavior": "判断板载 nRF24L01+ 是否收到新数据包。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断板载 nRF24L01+ 是否收到新数据包。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断板载 nRF24L01+ 是否收到新数据包。",
+            "template": "EmakefunRFNano::available()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "判断板载 nRF24L01+ 是否收到新数据包。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_read_text",
+      "display_name": "2.4G 无线 读取文本",
+      "description": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "value",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+        "behavior": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "String"
+        ],
+        "description": "读取板载 nRF24L01+ 收到的一帧文本数据。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+            "template": "EmakefunRFNano::readText()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_rf24_read_number",
+      "display_name": "2.4G 无线 读取数字",
+      "description": "读取板载 nRF24L01+ 收到的数字。",
+      "category": "板载 2.4G 无线 (nRF24)",
+      "kind": "value",
+      "keywords": [
+        "板载 2.4G 无线 (nRF24)",
+        "emakefun_rf24",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "读取板载 nRF24L01+ 收到的数字。",
+        "behavior": "读取板载 nRF24L01+ 收到的数字。",
+        "concepts": [
+          "板载 2.4G 无线 (nRF24)"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Number"
+        ],
+        "description": "读取板载 nRF24L01+ 收到的数字。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunRFNano",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunRFNano.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunRFNano/。"
+        },
+        {
+          "kind": "arduino-library",
+          "id": "RF24",
+          "version": "1.6.2",
+          "headers": [
+            "RF24.h"
+          ],
+          "license": "GPL-2.0-only",
+          "reason": "官方上游 nRF24/RF24 v1.6.2 驱动，内置于 libraries/RF24/。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:nano"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunRFNano.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取板载 nRF24L01+ 收到的数字。",
+            "template": "EmakefunRFNano::readNumber()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。",
+          "message": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 固定占用 D7(CE)、D8(CSN)、D11(MOSI)、D12(MISO)、D13(SCK)。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 2.4G 无线 (nRF24) 随包示例",
+          "description": "读取板载 nRF24L01+ 收到的数字。",
+          "expected_behavior": "完成 板载 2.4G 无线 (nRF24) 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:nano"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

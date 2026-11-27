@@ -1,0 +1,990 @@
+{
+  "schema_version": 2,
+  "id": "emakefun_ble",
+  "display_name": "板载 BLE 蓝牙",
+  "description": "Emakefun BLE-Uno 板载 BLE 蓝牙串口通信与 AT 指令配置积木库。",
+  "license": {
+    "spdx_id": "Apache-2.0",
+    "file": "LICENSE.txt"
+  },
+  "compatibility": {
+    "architectures": [
+      "avr"
+    ],
+    "boards": [
+      "arduino:avr:uno"
+    ]
+  },
+  "entrypoints": {
+    "blocks": "blocks/blocks.json",
+    "generator": "blocks/ck-generator.json",
+    "toolbox": "blocks/toolbox.json"
+  },
+  "blocks": [
+    {
+      "type": "emakefun_ble_begin",
+      "display_name": "初始化板载 BLE 蓝牙 波特率 %1",
+      "description": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+        "behavior": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "BAUD",
+          "kind": "dropdown",
+          "description": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+          "options": [
+            {
+              "label": "115200（默认）",
+              "value": "115200"
+            },
+            {
+              "label": "9600",
+              "value": "9600"
+            },
+            {
+              "label": "38400",
+              "value": "38400"
+            },
+            {
+              "label": "57600",
+              "value": "57600"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+            "template": "EmakefunBleUno::begin({{field:BAUD}}UL);\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "初始化 BLE-Uno 板载蓝牙硬件串口（官方出厂默认 115200）。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_set_name",
+      "display_name": "BLE 蓝牙 设置设备名称 %1",
+      "description": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+        "behavior": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "NAME",
+          "kind": "value",
+          "description": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+            "template": "EmakefunBleUno::setName(String({{value:NAME}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "发送 AT+NAME 指令修改 BLE 蓝牙广播名称。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_set_role",
+      "display_name": "BLE 蓝牙 设为 %1 模式",
+      "description": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+        "behavior": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "ROLE",
+          "kind": "dropdown",
+          "description": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+          "options": [
+            {
+              "label": "从机 (1)",
+              "value": "1"
+            },
+            {
+              "label": "主机 (0)",
+              "value": "0"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+            "template": "EmakefunBleUno::setRole({{field:ROLE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "通过 AT+ROLE 切换主从模式（手机连接板子选从机 1，两块板互连时主控选主机 0）。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_set_route",
+      "display_name": "BLE 蓝牙 通信模式 %1",
+      "description": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+        "behavior": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "MODE",
+          "kind": "dropdown",
+          "description": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+          "options": [
+            {
+              "label": "BLE透传 (0)",
+              "value": "0"
+            },
+            {
+              "label": "USB直连BLE (1)",
+              "value": "1"
+            },
+            {
+              "label": "透传+USB监听 (2)",
+              "value": "2"
+            }
+          ]
+        }
+      ],
+      "inputs": [],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+            "template": "EmakefunBleUno::setRoute({{field:MODE}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "通过 AT+BLEUSB 设置串口与 BLE 之间的数据路由模式。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_connect",
+      "display_name": "BLE 蓝牙 主机连接从机 MAC %1",
+      "description": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+        "behavior": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "MAC",
+          "kind": "value",
+          "description": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+            "template": "EmakefunBleUno::connectMac(String({{value:MAC}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "主机模式下发送 AT+CON 连接指定 MAC 地址的蓝牙从机。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_send_text",
+      "display_name": "BLE 蓝牙 发送文本 %1 换行 %2",
+      "description": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+        "behavior": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "通过板载 BLE 蓝牙向手机或对端设备发送文本。"
+        ]
+      },
+      "fields": [
+        {
+          "name": "NL",
+          "kind": "dropdown",
+          "description": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+          "options": [
+            {
+              "label": "是",
+              "value": "true"
+            },
+            {
+              "label": "否",
+              "value": "false"
+            }
+          ]
+        }
+      ],
+      "inputs": [
+        {
+          "name": "TEXT",
+          "kind": "value",
+          "description": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+            "template": "EmakefunBleUno::sendText(String({{value:TEXT}}), {{field:NL}});\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "通过板载 BLE 蓝牙向手机或对端设备发送文本。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_available",
+      "display_name": "BLE 蓝牙 收到数据？",
+      "description": "判断板载 BLE 蓝牙是否收到待读取数据。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "value",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "判断板载 BLE 蓝牙是否收到待读取数据。",
+        "behavior": "判断板载 BLE 蓝牙是否收到待读取数据。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "Boolean"
+        ],
+        "description": "判断板载 BLE 蓝牙是否收到待读取数据。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "expression",
+            "description": "判断板载 BLE 蓝牙是否收到待读取数据。",
+            "template": "EmakefunBleUno::available()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "判断板载 BLE 蓝牙是否收到待读取数据。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_read_text",
+      "display_name": "BLE 蓝牙 读取文本",
+      "description": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "value",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+        "behavior": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": []
+      },
+      "fields": [],
+      "inputs": [],
+      "output": {
+        "connection": "value",
+        "types": [
+          "String"
+        ],
+        "description": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。"
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "expression",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "expression",
+            "description": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+            "template": "EmakefunBleUno::readText()"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "读取板载 BLE 蓝牙收到的完整字符串并自动去除首尾换行。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    },
+    {
+      "type": "emakefun_ble_send_at",
+      "display_name": "BLE 蓝牙 发送 AT 指令 %1",
+      "description": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+      "category": "板载 BLE 蓝牙",
+      "kind": "statement",
+      "keywords": [
+        "板载 BLE 蓝牙",
+        "emakefun_ble",
+        "Emakefun"
+      ],
+      "semantics": {
+        "purpose": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+        "behavior": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+        "concepts": [
+          "板载 BLE 蓝牙"
+        ],
+        "side_effects": [
+          "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。"
+        ]
+      },
+      "fields": [],
+      "inputs": [
+        {
+          "name": "CMD",
+          "kind": "value",
+          "description": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+          "check": "String",
+          "required": true
+        }
+      ],
+      "output": {
+        "connection": "none",
+        "types": []
+      },
+      "dependencies": [
+        {
+          "kind": "arduino-library",
+          "id": "EmakefunBleUno",
+          "version": "1.1.0",
+          "headers": [
+            "EmakefunBleUno.h"
+          ],
+          "license": "Apache-2.0",
+          "reason": "板卡随包内置于 libraries/EmakefunBleUno/，基于硬件串口 Serial。"
+        }
+      ],
+      "hardware": {
+        "resources": [],
+        "claims": {
+          "version": 1,
+          "coverage": "partial",
+          "templates": []
+        },
+        "boards": [
+          "arduino:avr:uno"
+        ],
+        "architectures": [
+          "avr"
+        ],
+        "notes": [
+          "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        ]
+      },
+      "generation": {
+        "language": "arduino-cpp",
+        "shape": "statement",
+        "deterministic": true,
+        "emissions": [
+          {
+            "section": "include",
+            "description": "引入板载驱动头文件",
+            "template": "#include <EmakefunBleUno.h>"
+          },
+          {
+            "section": "statement",
+            "description": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+            "template": "EmakefunBleUno::sendAt(String({{value:CMD}}));\n"
+          }
+        ]
+      },
+      "constraints": [
+        {
+          "id": "usage",
+          "severity": "info",
+          "description": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。",
+          "message": "Emakefun BLE-Uno 板载 BLE 芯片复用硬件串口 Serial（D0/D1），官方默认波特率 115200。"
+        }
+      ],
+      "examples": [
+        {
+          "id": "demo",
+          "title": "板载 BLE 蓝牙 随包示例",
+          "description": "向板载 BLE 芯片发送自定义 AT 指令（例如 AT+MAC? 或 AT+RESET）。",
+          "expected_behavior": "完成 板载 BLE 蓝牙 初始化与基础收发演示。",
+          "project": "examples/demo.ck",
+          "boards": [
+            "arduino:avr:uno"
+          ]
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

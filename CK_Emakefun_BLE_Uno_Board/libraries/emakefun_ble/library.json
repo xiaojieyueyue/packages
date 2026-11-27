@@ -1,0 +1,14 @@
+{
+  "id": "emakefun_ble",
+  "name": "板载 BLE 蓝牙",
+  "description": "Emakefun BLE-Uno 板载 BLE 蓝牙串口通信与 AT 指令配置积木库。",
+  "version": "1.1.0",
+  "author": "CKYAN",
+  "architectures": [
+    "avr"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunBleUno.h"
+  ]
+}

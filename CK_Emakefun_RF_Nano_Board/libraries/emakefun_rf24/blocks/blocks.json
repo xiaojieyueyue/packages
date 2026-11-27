@@ -1,0 +1,151 @@
+[
+  {
+    "type": "emakefun_rf24_begin",
+    "message0": "初始化板载 2.4G 无线 频道 %1 功率 %2 速率 %3",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "CHANNEL",
+        "check": "Number"
+      },
+      {
+        "type": "field_dropdown",
+        "name": "PA",
+        "options": [
+          [
+            "最大 (MAX)",
+            "3"
+          ],
+          [
+            "高 (HIGH)",
+            "2"
+          ],
+          [
+            "低 (LOW)",
+            "1"
+          ],
+          [
+            "最小 (MIN)",
+            "0"
+          ]
+        ]
+      },
+      {
+        "type": "field_dropdown",
+        "name": "RATE",
+        "options": [
+          [
+            "1Mbps",
+            "1"
+          ],
+          [
+            "2Mbps",
+            "2"
+          ],
+          [
+            "250Kbps",
+            "0"
+          ]
+        ]
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E65100",
+    "tooltip": "初始化 RF-Nano 板载 nRF24L01+（CE=D7, CSN=D8），频道范围 0-125，推荐 115 避开 Wi-Fi 干扰。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_set_tx",
+    "message0": "2.4G 无线 设为发送模式 目标地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E65100",
+    "tooltip": "设置 5 字节通信地址并切换到发送模式。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_set_rx",
+    "message0": "2.4G 无线 设为接收模式 监听地址 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "ADDR",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E65100",
+    "tooltip": "设置 5 字节监听地址并开启接收监听。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_send_text",
+    "message0": "2.4G 无线 发送文本 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "TEXT",
+        "check": "String"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E65100",
+    "tooltip": "通过板载 nRF24L01+ 发送一段文本（最多 31 字节）。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_send_number",
+    "message0": "2.4G 无线 发送数字 %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "NUM",
+        "check": "Number"
+      }
+    ],
+    "inputsInline": true,
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#E65100",
+    "tooltip": "通过板载 nRF24L01+ 发送一个数字。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_available",
+    "message0": "2.4G 无线 收到数据？",
+    "output": "Boolean",
+    "colour": "#E65100",
+    "tooltip": "判断板载 nRF24L01+ 是否收到新数据包。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_read_text",
+    "message0": "2.4G 无线 读取文本",
+    "output": "String",
+    "colour": "#E65100",
+    "tooltip": "读取板载 nRF24L01+ 收到的一帧文本数据。",
+    "helpUrl": ""
+  },
+  {
+    "type": "emakefun_rf24_read_number",
+    "message0": "2.4G 无线 读取数字",
+    "output": "Number",
+    "colour": "#E65100",
+    "tooltip": "读取板载 nRF24L01+ 收到的数字。",
+    "helpUrl": ""
+  }
+]

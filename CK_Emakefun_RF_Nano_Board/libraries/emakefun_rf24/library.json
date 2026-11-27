@@ -1,0 +1,14 @@
+{
+  "id": "emakefun_rf24",
+  "name": "板载 2.4G 无线 (nRF24)",
+  "description": "Emakefun RF-Nano V3.0 板载 nRF24L01+ 2.4GHz 无线通信积木库（内置官方 RF24 v1.6.2 驱动）。",
+  "version": "1.1.0",
+  "author": "CKYAN",
+  "architectures": [
+    "avr"
+  ],
+  "license": "Apache-2.0",
+  "includes": [
+    "EmakefunRFNano.h"
+  ]
+}

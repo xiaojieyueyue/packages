@@ -1,0 +1,9 @@
+Apache License 2.0 (Board Package Manifest & CK Block Wrappers)
+
+Copyright (c) 2026 CKYAN (https://github.com/ovoVHV/CK)
+
+The CK LAB board package manifest (board.json), declarative blocks, and CK adapter wrappers
+are licensed under the Apache License, Version 2.0.
+Emakefun brand marks and product images are sourced from Emakefun's official public repositories
+(https://docs.emakefun.com/ and https://github.com/emakefun) for hardware identification in CK LAB.
+Upstream C++ libraries bundled inside libraries/*/libraries/ retain their own original licenses.
